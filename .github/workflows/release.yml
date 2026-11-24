@@ -1,0 +1,27 @@
+name: 自动发布 Release
+
+on:
+  push:
+    tags:
+      - 'v*'          # 推送 v 开头的 tag 时触发，如 v1.0.0
+
+permissions:
+  contents: write     # 允许创建 Release 和上传资产
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 创建 Release 并上传资产
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
+          generate_release_notes: true
+          files: |
+            *.zip
+            *.exe
+          fail_on_unmatched_files: false
