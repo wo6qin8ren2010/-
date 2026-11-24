@@ -86,3 +86,7 @@ exe 运行时按文件名找资源：**exe 同目录的 `bg_weather.jpg` / `app.
 - `PyQt5`、`PyQt5-QtSvg`（界面与 SVG 图标）
 
 安装：`python -m pip install pycaw comtypes PyQt5`
+
+## 版本更新说明
+- v1.0.1
+- 添加自动更新功能
